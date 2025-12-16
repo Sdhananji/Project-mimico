@@ -9,7 +9,7 @@
 }
 
 /*background slideshow*/
-.auth-page::before{
+/*.auth-page::before{
     content:"";
     position: fixed;
     inset:0;
@@ -18,7 +18,7 @@
     background-position:center;
     animation:bgSlide 15s infinite;
     z-index: -2;
-}
+}*/
 
 /* Dark overlay for readability */
 .auth-page::after{
@@ -29,25 +29,53 @@
     z-index:-1;
 }
 
-@keyframes bgSlide{
-    0%{
-        background-image:url(../assets/background_auth1.jpg);
-    }
-    20%{
-        background-image:url(../assets/background_auth2.avif);
-    }
-    40%{
-        background-image:url(../assets/background_auth3.jpeg);
-    }
-    60%{
-        background-image:url(../assets/background_auth4.jpg);
-    }
-    80%{
-        background-image:url(../assets/background_auth5.jpeg);
-    }
-    100%{
-        background-image:url(../assets/background_auth6.jpg);
-    }
+.slideshow{
+    position: absolute;
+    inset:0;
+    z-index:-2;
+}
+
+.slideshow-image{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:0;
+    animation:imageFade 30s infinite;
+}
+
+.slideshow-image-1{
+    background-image: url(../assets/background_auth1.jpg);
+    animation-delay:0s;
+}
+.slideshow-image-2{
+    background-image: url(../assets/background_auth2.jpg);
+    animation-delay:5s;
+}
+.slideshow-image-3{
+    background-image: url(../assets/background_auth3.jpg);
+    animation-delay:10s;
+}
+.slideshow-image-4{
+    background-image: url(../assets/background_auth4.jpg);
+    animation-delay:15s;
+}
+.slideshow-image-5{
+    background-image: url(../assets/background_auth5.jpg);
+    animation-delay:20s;
+}
+.slideshow-image-6{
+    background-image: url(../assets/background_auth6.jpg);
+    animation-delay:25s;
+}
+
+@keyframes imageFade{
+    0% {opacity: 0;}
+    8.33% {opacity: 1; }
+    16.66% {opacity: 1; }
+    25% {opacity: 0; }
+    100% {opacity: 0; }
 }
 .auth-form{
     background: white;

@@ -26,6 +26,15 @@ function Login(){
 
     return (
         <div className="auth-page">
+
+            <div className = "slideshow">
+                <div className="slideshow-image slideshow-image-1"></div>
+                <div className="slideshow-image slideshow-image-2"></div>
+                <div className="slideshow-image slideshow-image-3"></div>
+                <div className="slideshow-image slideshow-image-4"></div>
+                <div className="slideshow-image slideshow-image-5"></div>
+                <div className="slideshow-image slideshow-image-6"></div>
+            </div>
             <AuthForm 
                 title = "Login"
                 buttonText = "Login"
