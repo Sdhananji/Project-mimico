@@ -43,12 +43,14 @@ function Login(){
                     {
                         type: "email",
                         placeholder:"email",
+                        icon: "fas fa-envelope",
                         value: email,
                         onChange: (e) => setEmail(e.target.value),
                     },
                     {
                         type: "password",
                         placeholder:"Password",
+                        icon: "fas fa-lock",
                         value:password,
                         onChange: (e) => setPassword(e.target.value),
                     },
