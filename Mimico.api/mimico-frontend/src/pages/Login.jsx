@@ -14,7 +14,7 @@ function Login(){
         e.preventDefault();
         try{
             const res = await loginUser({email, password});
-            localStorage.ssetItem("token", res.data.token);
+            localStorage.setItem("token", res.data.token);
             alert("Login Successful!")
             navigate("/dashboard");
         }catch{
@@ -36,7 +36,7 @@ function Login(){
                 <div className="slideshow-image slideshow-image-6"></div>
             </div>
             <AuthForm 
-                title = "Login"
+                title = "Login User"
                 buttonText = "Login"
                 onSubmit = {handleSubmit}
                 fields={[
