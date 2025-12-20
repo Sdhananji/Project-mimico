@@ -8,5 +8,6 @@ namespace Mimico.Api.Repositories
         Task<User?> GetUserByEmailAsync(string email);
         Task AddUserAsync( User user);
         Task <bool> SaveChangesAsync();
+        Task <User?> GetUserByIdAsync(int id);
     }
 }

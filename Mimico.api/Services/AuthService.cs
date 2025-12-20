@@ -109,6 +109,21 @@ namespace Mimico.Api.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        public async Task<UserProfileDto?> GetCurrentUserAsync(int userId)
+        {
+            var user = await _repo.GetUserByIdAsync(userId);
+            if(user==null) return null;
+
+            return new UserProfileDto
+            {
+                Id = user.Id,
+                FullName= user.FullName,
+                Email=user.Email,
+                Role=user.Role
+            };
+
+        }
+
     }
 }
 
