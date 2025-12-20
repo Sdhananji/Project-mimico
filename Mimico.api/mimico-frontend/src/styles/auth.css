@@ -3,8 +3,10 @@
   height: 100vh;
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 10%;
+  box-sizing: border-box;
 }
 
 /*background slideshow*/
@@ -92,9 +94,11 @@
 .auth-form h2{
     text-align: center;
     margin-bottom: 25px;
-    font-size: 24px;
-    font-weight:600;
+    font-size: 32px;
+    font-weight:700;
     color: #111;
+    letter-spacing: -0.5px;
+    font-family:'Poppins', sans-serif;
 }
 
 .auth-form input{
@@ -166,4 +170,63 @@
     color: #ffffff;
     text-decoration:underline;
     text-shadow: 0 0 8px rgba(150, 103, 224, 0.5);
+}
+
+/* LEFT SIDE CONTAINER */
+.auth-left{
+    flex: 1;
+    color: white;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* "Welcome Back to" text */
+.welcome-script{
+    font-family: 'Pacifico', cursive;
+    font-size: 26px;
+    margin-bottom: 10px;
+    opacity: 0.95;
+}
+
+/* Brand name */
+.brand-name{
+    font-family: 'Poppins', sans-serif;
+    font-size: 54px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Poem container */
+.poem{
+    margin-bottom: 25px;
+}
+
+/* Poem lines */
+.poem p{
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    margin: 6px 0;
+    opacity: 0.95;
+}
+
+/* Description text */
+.description{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    max-width: 420px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/*Responsive: hide text on small screens */
+
+@media (max-width: 900px){
+    .auth-left{
+        display:none;
+    }
 }

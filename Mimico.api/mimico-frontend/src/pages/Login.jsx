@@ -35,6 +35,26 @@ function Login(){
                 <div className="slideshow-image slideshow-image-5"></div>
                 <div className="slideshow-image slideshow-image-6"></div>
             </div>
+
+            {/*Left side  content */}
+            <div className="auth-left">
+                <p className="welcome-script">Welcome Back to</p>
+
+                <h1 className="brand-name">Mimico</h1>
+
+                <div className="poem italic-text">
+                    <p>Inspired by the ocean.</p>
+                    <p>Crafted by hand.</p>
+                    <p>Made for you.</p>
+                </div>
+
+                <p className="description">
+                    Log in to discover beach-vibe jewelry that tells a story.
+                </p>
+            </div>
+
+
+            {/*Right lofin form */}
             <AuthForm 
                 title = "Login User"
                 buttonText = "Login"
