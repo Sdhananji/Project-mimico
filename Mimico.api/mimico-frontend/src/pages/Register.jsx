@@ -41,6 +41,19 @@ function Register(){
             </div>
 
             {/* Register Form */}
+            <div className="auth-left">
+                <p className = "welcome-script">Join</p>
+
+                <h1 className = "brand-name">Mimico</h1>
+
+                <div className = "poem italic-text">
+                    <p>Join Mimico and explore handcrafted,</p>
+                    <p>beach-inspired jewelry made with love and care.</p>
+                    <p>Sign up to discover unique pieces</p>
+                    <p>that capture the beauty of the ocean.</p>
+                    
+                </div>
+            </div>
             <AuthForm 
                 title="Register User"
                 buttonText = "Register"

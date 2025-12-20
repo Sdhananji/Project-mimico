@@ -176,7 +176,7 @@
 .auth-left{
     flex: 1;
     color: white;
-    padding: 80px 20px;
+    padding: 80px 0 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -211,7 +211,36 @@
     font-size: 22px;
     font-style: italic;
     margin: 6px 0;
-    opacity: 0.95;
+    color: #e6c37a;
+
+    text-shadow:
+        0 0 8px rgba(230,195,122,0.7),
+        0 2px 12px rgba(0,0,0,0.7);
+
+    opacity:0.95;
+}
+
+.poem p:first-child{
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.9),
+        0 2px 14px rgba(0,0,0,0.7);
+}
+
+@keyframes goldGlow{
+    0%, 100%{
+        text-shadow:
+            0 0 6px rgba(230,195,122,0.5),
+            0 2px 12px rgba(0,0,0,0.7);
+    }
+    50%{
+        text-shadow:
+            0 0 14px rgba(230,195,122,0.9),
+            0 2px 18px rgba(0,0,0,0.8);
+    }
+}
+
+.poem p{
+    animation: goldGlow 7s ease-in-out infinite;
 }
 
 /* Description text */
