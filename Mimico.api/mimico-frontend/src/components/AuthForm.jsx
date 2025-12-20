@@ -7,7 +7,8 @@ function AuthForm({
     title,
     fields,
     buttonText,
-    onSubmit
+    onSubmit,
+    showFooter = false
 
 }){
     return (
@@ -32,9 +33,13 @@ function AuthForm({
             <button type = "submit">{buttonText}</button>
 
             {/* Added Registration Link */}
-            <div className = "auth-footer">
-                <p>Have you not registered yet? <Link to= "/register">Click to register</Link></p>
-            </div>
+            {showFooter && (
+                <div className = "auth-footer">
+                    <p>
+                        Have you not registered yet? <Link to= "/register">Click to register</Link>
+                    </p>
+                </div>
+            )}
         </form>
     );
 }

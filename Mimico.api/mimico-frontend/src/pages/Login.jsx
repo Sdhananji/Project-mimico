@@ -39,6 +39,7 @@ function Login(){
                 title = "Login User"
                 buttonText = "Login"
                 onSubmit = {handleSubmit}
+                showFooter = {true}
                 fields={[
                     {
                         type: "email",
