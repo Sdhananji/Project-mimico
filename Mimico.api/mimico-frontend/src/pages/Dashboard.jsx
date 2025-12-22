@@ -19,16 +19,29 @@ function Dashboard(){
 
     }, [navigate]);
 
+    const handleLogout = () =>{
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
+
     if (!user){
-        return <p style = {{color: "$fff", textAlign: "center"}}>Loading dashboard...</p>
+        return <p className = "loading-text">Loading dashboard...</p>
 
     }
 
     return(
         <div className = "dashboard">
-            <h1>Welcome, {user.fullName}✨</h1>
-            <p>Email: {user.email}</p>
-            <p>Role: {user.role}</p>
+            <div className = "dashboard-header">
+                <h1>Welcome, {user.fullName}✨</h1>
+                <button className = "logout -btn" onClick = {handleLogout}>
+                    Logout
+                </button>
+            </div>
+            <div className = "dashboard-card">
+                <p><strong>Email:</strong> {user.email}</p>
+                <p><strong>Role: </strong>{user.role}</p>
+            </div>
+           
         </div>
     );
 }
