@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Mimico.api.Models;
-using Mimico.Api.Data;
+using Mimico.Api.Services.Interfaces;
 using Mimico.Api.DTOs;
-using Mimico.Api.Models;
 
 namespace Mimico.Api.Controllers
 {
@@ -12,67 +10,23 @@ namespace Mimico.Api.Controllers
     [Route("/api/admin/products")]
     [Authorize(Roles = "Admin")]
 
-    public class AdminProductController: ControllerBase
+    public class AdminProductsController: ControllerBase
     {
-        private readonly AppDbContext _context;
-        private readonly IWebHostEnvironment _env;
+        private readonly IProductService _productService;
 
-        public AdminProductsController(AppDbContext context, IWebHostEnvironment env)
+        public AdminProductsController(IProductService productService)
         {
-            _context = context;
-            _env = env;
-        }   
-
-        [HttpPost]
-        public async Task<IActionResult> CreateProduct ([FromForm] ProductCreateDto dto)
-        {
-            var product = new Product
-            {
-                Name = dto.Name,
-                Description = dto.Description,
-                Price = dto.Price,
-                Category = dto.Category
-            };
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync(); //ProductId generated
-
-            if(dto.Images !=null && dto.Images.Count > 0)
-            {
-                var uploadRoot = Path.Combine(
-                    _env.WebRootPath,
-                    "uploads",
-                    "products",
-                    product.Id.ToString()
-                );
-
-                Directory.CreateDirectory(uploadRoot);
-
-                foreach(var file in dto.Images)
-                {
-                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                    var filePath = Path.Combine(uploadRoot, fileName);
-
-                    using var stream = new FileStream(filePath, FileMode.Create);
-                    await file.CopyToAsync(stream);
-
-                    _context.ProductImages.Add(new ProductImage
-                    {
-                        ProductId = product.Id,
-                        ImagePath = $"/uploads/products/{product.Id}/{fileName}",
-                        IsPrimary = false
-                    });
-                }
-            }
-
-            await _context.SaveChangesAsync();
-
-            return Ok(new
-            {
-                message = "Product created successfully",
-                productId = product.Id
-            });
+            _productService = productService;
         }
 
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create ([FromForm] ProductCreateDto dto)
+        {
+            var productId = await _productService.CreateProductAsync(dto);
+            return Ok(new {message = "Product created", productId});
+        }
     }
 
 }
+
