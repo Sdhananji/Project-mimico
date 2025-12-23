@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mimico.api.Products
+namespace Mimico.api.Models
 {
-    public class Products
+    public class Product
     {
         [Key]
         public int Id{get; set;}
