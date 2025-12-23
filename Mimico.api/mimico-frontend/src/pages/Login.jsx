@@ -2,6 +2,7 @@ import {useState} from "react";
 import {loginUser} from "../api/auth";
 import {useNavigate} from "react-router-dom";
 import AuthForm from "../components/AuthForm";
+import {jwtDecode} from "jwt-decode";
 import "../styles/auth.css";
 
 function Login(){
@@ -14,9 +15,21 @@ function Login(){
         e.preventDefault();
         try{
             const res = await loginUser({email, password});
-            localStorage.setItem("token", res.data.token);
+            const token = res.data.token;
+            localStorage.setItem("token",token);
+
+            //decode JWT to get role
+            const decoded = jwtDecode(token);
+            const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
             alert("Login Successful!")
-            navigate("/dashboard");
+
+            if(role == "Admin"){
+                navigate("/admin");
+            }else{
+                navigate("/dashboard");
+            }
+            
         }catch{
             alert("Login Failed!");
         }

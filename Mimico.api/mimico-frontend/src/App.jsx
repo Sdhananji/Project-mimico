@@ -3,7 +3,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
+import AdminDashboard from "./pages/AdminDashboard";
+import Unauthorized from "./pages/Unauthorized";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminRoute from "./routes/AdminRoute";
 
 function App(){
   return (
@@ -16,7 +19,20 @@ function App(){
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-        } />
+        } 
+        />
+
+        {/* Admin only dashboard */}
+        <Route 
+          path = "/admin"
+          element = {
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+        {/* Unauthorized access */}
+        <Route path = "/unauthorized" element={<Unauthorized />} />
       </Routes>
     </BrowserRouter>
   );
