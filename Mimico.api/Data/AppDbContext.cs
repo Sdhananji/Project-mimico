@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Mimico.api.Models;
 using Mimico.Api.Models;
 
 namespace Mimico.Api.Data
@@ -12,5 +13,11 @@ namespace Mimico.Api.Data
     public DbSet<User> Users {get;set;}
         // Example table
         // public DbSet<Product> Products { get; set; }
+
+    public DbSet<Product> Products {get; set;}
+
+    public DbSet<ProductImage> ProductImages => Set<ProductImage>();
     }
+
+    
 }
