@@ -7,6 +7,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Unauthorized from "./pages/Unauthorized";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
+import AddProduct from "./pages/admin/AddProduct";
+import AdminHome from "./pages/admin/AdminHome";
 
 function App(){
   return (
@@ -30,7 +32,11 @@ function App(){
               <AdminDashboard />
             </AdminRoute>
           }
-        />
+        >
+          <Route index element={<AdminHome />} />
+          <Route path="products/add" element={<AddProduct />} />
+        </Route>
+        
         {/* Unauthorized access */}
         <Route path = "/unauthorized" element={<Unauthorized />} />
       </Routes>

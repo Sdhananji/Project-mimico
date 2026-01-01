@@ -17,6 +17,6 @@ namespace Mimico.api.Models
         public bool IsPrimary {get; set;} = false;
 
         [ForeignKey(nameof(ProductId))]
-        public Product product {get; set;}
+        public Product Product {get; set;}
     }
 }

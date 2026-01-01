@@ -1,0 +1,171 @@
+/* Container and Layout */
+.add-product-container {
+    padding: 10px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.page-title {
+    color: #2b3674;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.add-product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr; /* 2 columns: Image card and Form card */
+    gap: 30px;
+    align-items: start;
+}
+
+/* Card Common Styling */
+.product-card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(112, 144, 176, 0.1); /* Soft professional shadow */
+}
+
+.product-card h3 {
+    font-size: 18px;
+    color: #2b3674;
+    margin-bottom: 20px;
+}
+
+/* --- Image Upload Section --- */
+.drop-zone {
+    border: 2px dashed #00AEEF;
+    border-radius: 15px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #a3aed0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.drop-zone:hover {
+    background: #f4f7fe;
+}
+
+.drop-zone i {
+    font-size: 45px;
+    color: #00AEEF;
+    margin-bottom: 15px;
+}
+
+.drop-zone span {
+    color: #00AEEF;
+    font-weight: 700;
+}
+
+/* Uploaded List Styling */
+.upload-list {
+    margin-top: 25px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.upload-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border: 1px solid #e0e5f2;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.thumb-preview {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.file-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b3674;
+    margin: 0;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #a3aed0;
+    margin: 0;
+}
+
+.delete-icon {
+    color: #ff5b5b;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.delete-icon:hover {
+    transform: scale(1.2);
+}
+
+/* --- Form Section --- */
+.form-group {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2b3674;
+    margin-bottom: 10px;
+}
+
+.add-product-form input, 
+.add-product-form textarea {
+    padding: 14px;
+    border: 1px solid #e0e5f2;
+    border-radius: 12px;
+    background: #f4f7fe;
+    font-family: inherit;
+    color: #2b3674;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.add-product-form input:focus, 
+.add-product-form textarea:focus {
+    border-color: #00AEEF;
+}
+
+.submit-btn {
+    background: #00AEEF;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 174, 239, 0.2);
+}
+
+.submit-btn:hover {
+    background: #008cc0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

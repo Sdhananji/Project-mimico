@@ -1,0 +1,35 @@
+.admin-container {
+  display: flex;
+  width:100vw;
+  min-height: 100vh;
+  background-color: #f4f7fe; /* Light blue-grey background */
+  margin:0;
+  padding:0;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f7fe;
+  height: 100vh;
+}
+
+.admin-content {
+  padding: 30px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Base styles for AdminHome */
+.admin-content h1 {
+  font-size: 28px;
+  color: #2b3674;
+  margin-bottom: 10px;
+}
+
+.admin-content p {
+  color: #a3aed0;
+}

@@ -1,0 +1,21 @@
+.admin-topbar {
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Pushes profile to the right */
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Add a placeholder for when you add profile icons later */
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #2b3674;
+  font-weight: 600;
+}
