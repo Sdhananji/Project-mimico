@@ -15,7 +15,7 @@ function AddProduct() {
         const files = Array.from(e.target.files);
         const fileObjects = files.map(file =>({
             file: file,
-            preview: URL>CreateObjectURL(file),
+            preview: URL.createObjectURL(file),
             name:file.name,
             size:(file.size/1024).toFixed(1)+ "KB"
         }));
@@ -24,6 +24,7 @@ function AddProduct() {
     };
 
     const removeImage = (index) =>{
+        URL.revokeObjectURL(selectedImages[index].preview);
         setSelectedImages(selectedImages.filter((_, i) => i !==index));
     };
 
@@ -48,10 +49,11 @@ function AddProduct() {
             </label>
 
             <div className = "upload-list">
-                {selectedImages.map((img, index)=>{
+                {selectedImages.map((img, index)=>(
                     <div key ={index} className = "upload-item">
                         <div className = "item-info">
-                            <img src = {img.preview} alt = "preview" className = "thumb-preview" />
+                            <img src = {img.preview} alt = "preview" className = "thumb-preview" 
+                            />
                             <div className = "file-details">
                                 <p className = "file-name">{img.name}</p>
                                 <p className = "file-size">{img.size}</p>
@@ -63,7 +65,7 @@ function AddProduct() {
                             title="Remove Image"
                         ></i>
                     </div>
-                })}
+                ))}
             </div>
         </div>
 
