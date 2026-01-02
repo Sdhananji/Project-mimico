@@ -81,13 +81,22 @@ function AddProduct() {
             </div>
 
             <div className = "form-group">
-                <label>Criteria</label>
-                <input
-                    type = "text"
-                    placeholder = "criteria"
-                    value = {productData.criteria}
-                    onChange = {(e) =>setProductData({...productData, criteria: e.target.value})}
-                />
+                <label>Category</label>
+                <select 
+                    value={productData.criteria}
+                    onChange={(e)=>{
+                        setProductData({...productData,criteria: e.target.value})
+                    }}
+                    required
+                >
+                    <option value = "">Select category</option>
+                    <option value= "Necklace">Necklace</option>
+                    <option value = "Anklet">Anklet</option>
+                    <option value = "Phone charms">Phone charms</option>
+                    <option value = "Bracelet">Bracelet</option>
+                    <option value = "Earrings">Earrings</option>
+                    <option value = "Ring">Ring</option>
+                </select>
             </div>
 
             <div className = "form-group">
