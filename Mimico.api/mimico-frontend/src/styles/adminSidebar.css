@@ -1,22 +1,41 @@
 .admin-sidebar {
+  font-family:'Poppins',sans-serif;
   width: 280px;
   min-width: 180px;
   height: 100vh;
   background-color: #ffffff;
-  padding: 40px 20px;
+  padding: 40px 15px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #e0e5f2;
   box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+  width: 6px; /* Makes the scrollbar very thin */
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: #e0e5f2; 
+  border-radius: 10px; 
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #a3aed0; 
 }
 
 .admin-sidebar .brand {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 800;
   color: #00AEEF; /* Your Mimico blue */
-  text-align: center;
-  margin-bottom: 50px;
-  letter-spacing: 1px;
+  text-align: left;
+  margin-bottom: 40px;
+  padding-left: 20px;
 }
 
 .admin-sidebar nav {
@@ -31,19 +50,39 @@
   padding: 15px 20px;
   border-radius: 12px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
+}
+
+.admin-sidebar nav a i{
+  font-size: 18px;
+  margin-left: 15px;
+  width: 24px;
+  text-align: center;
 }
 
 .admin-sidebar nav a:hover {
   background-color: #f4f7fe;
   color: #2b3674;
+  transform: translate(4px);
 }
 
 /* Style for the active link (provided by NavLink) */
 .admin-sidebar nav a.active {
-  background-color: #00AEEF;
+  background: linear-gradient(135deg, #00AEEF 0%, #008cc0 100%);
   color: #ffffff;
-  box-shadow: 0px 10px 20px rgba(0, 174, 239, 0.2);
+  box-shadow: 0px 4px 12px rgba(0, 174, 239, 0.3);
+}
+.admin-sidebar nav a.active i {
+  color: #ffffff;
+}
+
+.admin-sidebar .section-title{
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #a3aed0;
+  font-weight: 700;
+  margin: 25px 20px 10px;
+  letter-spacing: 1.5px;
 }
