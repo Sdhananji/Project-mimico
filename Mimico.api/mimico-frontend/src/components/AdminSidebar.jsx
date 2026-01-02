@@ -1,12 +1,16 @@
 import { NavLink , useNavigate} from "react-router-dom";
 import "../styles/adminSidebar.css";
+import logo from "../assets/logo.jpeg";
 
 function AdminSidebar() {
   const navigate = useNavigate();
   
   return (
     <aside className="admin-sidebar">
-      <h2 className="brand">Ishuku ....</h2>
+      <div className = "brand-container" onClick={()=>navigate("/admin")}>
+        <img src={logo} alt="Mimico logo" className = "sidebar-logo" />
+        <h2 className = "brand-text">Mimico</h2>
+      </div>
 
       <nav>
         <NavLink to="/admin">
