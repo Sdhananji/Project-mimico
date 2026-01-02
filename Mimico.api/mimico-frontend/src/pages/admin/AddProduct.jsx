@@ -67,7 +67,7 @@ function AddProduct() {
             </div>
         </div>
 
-        <form classname = "product-card add-product-form">
+        <form className = "product-card add-product-form">
             <div className = "form-group">
                 <label>Product Name</label>
                 <input  
