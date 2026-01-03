@@ -1,9 +1,8 @@
 using Mimico.Api.Services.Interfaces;
 using Mimico.Api.Data;
-using Microsoft.AspNetCore.Hosting;
 using Mimico.Api.DTOs;
 using Mimico.api.Models;
-using Mimico.api.Migrations;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Mimico.Api.Services
@@ -33,6 +32,9 @@ namespace Mimico.Api.Services
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
+            if(dto.Images==null || dto.Images.Any())
+                return product.Id;
+
             var rootPath = _env.WebRootPath ?? Path.Combine(_env.ContentRootPath, "wwwroot");
 
             //create product folder
@@ -45,15 +47,22 @@ namespace Mimico.Api.Services
 
             Directory.CreateDirectory(productFolder);
 
+            var allowedExtensions = new[] {".jpg", ".jpeg", ".png", ".webp"};
+
             foreach(var image in dto.Images)
             {
-                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+                var extension = Path.GetExtension(image.FileName).ToLower();
+
+                if(!allowedExtensions.Contains(extension))
+                    continue;
+                if (image.Length>5*1024*1024)
+                    continue;
+
+                var fileName = $"{Guid.NewGuid()}{extension}";
                 var filePath = Path.Combine(productFolder, fileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await image.CopyToAsync(stream);
-                }
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await image.CopyToAsync(stream);
                 
 
                 product.Images.Add(new ProductImage

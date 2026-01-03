@@ -18,10 +18,10 @@ function AdminSidebar() {
         </NavLink>
 
         <p className = "section-title">Products</p>
-        <NavLink to = "/admin/products">
+        <NavLink to = "/admin/products" end className = "nav-item">
           <i className="fas fa-box"></i>All Products
         </NavLink>
-        <NavLink to = "/admin/products/add">
+        <NavLink to = "/admin/products/add" className = "nav-item">
           <i className="fas fa-plus-circle"></i>  Add Product
         </NavLink>
 
