@@ -3,6 +3,7 @@ using Mimico.Api.Data;
 using Mimico.Api.DTOs;
 using Mimico.api.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 
 namespace Mimico.Api.Services
@@ -49,6 +50,8 @@ namespace Mimico.Api.Services
 
             var allowedExtensions = new[] {".jpg", ".jpeg", ".png", ".webp"};
 
+            bool isFirstImage = true;
+
             foreach(var image in dto.Images)
             {
                 var extension = Path.GetExtension(image.FileName).ToLower();
@@ -67,12 +70,36 @@ namespace Mimico.Api.Services
 
                 product.Images.Add(new ProductImage
                 {
-                    ImagePath = $"uploads/products/{product.Id}/{fileName}"
+                    ImagePath = $"uploads/products/{product.Id}/{fileName}",
+                    IsPrimary = isFirstImage
                 });
+                isFirstImage = false;
             }
 
             await _context.SaveChangesAsync();
             return product.Id;
+        }
+
+        public async Task<List<ProductResponseDto>> GetAllProductsAsync()
+        {
+            return await _context.Products
+                .Include(p => p.Images)
+                .OrderByDescending(p =>p.Id)
+                .Select(p => new ProductResponseDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    Category = p.Category,
+                    Images = p.Images.Select(i => new ProductImageDto
+                    {
+                        Id = i.Id,
+                        ImagePath = i.ImagePath,
+                        IsPrimary = i.IsPrimary
+                    }).ToList()
+                })
+                .ToListAsync();
         }
     }
 }

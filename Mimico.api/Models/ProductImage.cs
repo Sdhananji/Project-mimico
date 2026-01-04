@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Mimico.api.Models
 {
@@ -17,6 +18,8 @@ namespace Mimico.api.Models
         public bool IsPrimary {get; set;} = false;
 
         [ForeignKey(nameof(ProductId))]
+
+        [JsonIgnore]
         public Product Product {get; set;}
     }
 }

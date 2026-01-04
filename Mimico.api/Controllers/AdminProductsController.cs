@@ -19,12 +19,22 @@ namespace Mimico.Api.Controllers
             _productService = productService;
         }
 
+        //Publish products by admin
         [HttpPost]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Create ([FromForm] ProductCreateDto dto)
         {
             var productId = await _productService.CreateProductAsync(dto);
             return Ok(new {message = "Product created", productId});
+        }
+
+
+        //Get all products for admin
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            var products =await _productService.GetAllProductsAsync();
+            return Ok(products);
         }
     }
 
