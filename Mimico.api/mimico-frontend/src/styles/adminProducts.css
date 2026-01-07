@@ -4,11 +4,9 @@
 
 .admin-products-container h2{
     margin-bottom: 20px;
+    color:#A99ABD;
 }
 
-.admin-product-container h2{
-    color: #F5CF9F;
-}
 
 .loading{
     padding: 40px;
