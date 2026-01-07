@@ -12,3 +12,8 @@ export const createProduct = async(formData)=>{
     );
     return response.data;
 };
+
+export const getAllProducts = async () => {
+  const response = await axiosInstance.get("/admin/products/all");
+  return response.data;
+};

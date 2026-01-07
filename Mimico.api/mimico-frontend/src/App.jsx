@@ -9,6 +9,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
 import AddProduct from "./pages/admin/AddProduct";
 import AdminHome from "./pages/admin/AdminHome";
+import ViewProducts from "./pages/admin/ViewProducts";
 
 function App(){
   return (
@@ -34,11 +35,14 @@ function App(){
           }
         >
           <Route index element={<AdminHome />} />
+          <Route path = "products" element={<ViewProducts />} />
           <Route path="products/add" element={<AddProduct />} />
         </Route>
         
         {/* Unauthorized access */}
         <Route path = "/unauthorized" element={<Unauthorized />} />
+
+
       </Routes>
     </BrowserRouter>
   );
