@@ -33,7 +33,7 @@ namespace Mimico.Api.Services
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            if(dto.Images==null || dto.Images.Any())
+            if(dto.Images==null || !dto.Images.Any())
                 return product.Id;
 
             var rootPath = _env.WebRootPath ?? Path.Combine(_env.ContentRootPath, "wwwroot");
